@@ -1,0 +1,25 @@
+{
+  "name": "regiezona-frontend",
+  "version": "1.0.0",
+  "description": "Main directory of the app",
+  "main": "index.js",
+  "dependencies": {
+    "eslint": "^7.16.0"
+  },
+  "devDependencies": {
+    "eslint-plugin-react": "^7.21.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/regieosano/regiezona-app.git"
+  },
+  "author": "Regie Osano",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/regieosano/regiezona-app/issues"
+  },
+  "homepage": "https://github.com/regieosano/regiezona-app#readme"
+}

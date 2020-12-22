@@ -1,10 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Rating from "../components/Rating";
-import data from "../data";
+import axios from "axios";
 
 export default function ProductScreen(props) {
-  const product = data.products.find((x) => x._id === props.match.params.id);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const { data } = await axios.get("http://localhost:5000/api/products");
+      setProducts(data);
+    };
+    fetchData();
+  }, []);
+  const product = products.find((x) => x._id === props.match.params.id);
   if (!product) {
     return <div>Product Not Found!</div>;
   }
@@ -26,7 +35,7 @@ export default function ProductScreen(props) {
                 numReviews={product.numReviews}
               ></Rating>
             </li>
-            <li>Price : ${product.price}</li>
+            <li>Price : &#8369; {product.price}</li>
             <li>
               Description:
               <p>{product.description}</p>
@@ -39,7 +48,7 @@ export default function ProductScreen(props) {
               <li>
                 <div className="row">
                   <div>Price</div>
-                  <div className="price">${product.price}</div>
+                  <div className="price">&#8369; {product.price}</div>
                 </div>
               </li>
               <li>
@@ -49,7 +58,7 @@ export default function ProductScreen(props) {
                     {product.countInStock > 0 ? (
                       <span className="success">In Stock</span>
                     ) : (
-                      <span className="error">Unavailable</span>
+                      <span className="danger">Unavailable</span>
                     )}
                   </div>
                 </div>
